@@ -1,0 +1,12 @@
+# directories
+.gradle/
+.settings/
+bin/
+gradle/
+
+# files
+.classpath
+.project
+gradlew
+gradlew.bat
+/src/main/resources/application-local.properties
