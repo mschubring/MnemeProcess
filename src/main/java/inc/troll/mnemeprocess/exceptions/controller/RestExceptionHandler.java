@@ -28,38 +28,16 @@ public class RestExceptionHandler implements WithInterfaceLogger {
 	/********************
 	* Custom exceptions *
 	********************/
-	@ExceptionHandler(value = InternalServerException.class)
-	public ResponseEntity<ErrorResponse> handleInternalServerError(HttpServletRequest request, HttpServletResponse response, InternalServerException errorResponse) {
-		logErrorResponse(request, errorResponse);
-		return new ResponseEntity<ErrorResponse>(errorResponse, errorResponse.getHttpStatus());
-	}
-	
-	@ExceptionHandler(value = InvalideAuthenticationException.class)
-	public ResponseEntity<ErrorResponse> handleInvalideAuthentication(HttpServletRequest request, HttpServletResponse response, InvalideAuthenticationException errorResponse) {
-		logErrorResponse(request, errorResponse);
-		return new ResponseEntity<ErrorResponse>(errorResponse, errorResponse.getHttpStatus());
-	}
-	
-	@ExceptionHandler(value = ItemConflictException.class)
-	public ResponseEntity<ErrorResponse> handleConflict(HttpServletRequest request, HttpServletResponse response, ItemConflictException errorResponse) {
-		logErrorResponse(request, errorResponse);
-		return new ResponseEntity<ErrorResponse>(errorResponse, errorResponse.getHttpStatus());
-	}
-	
-	@ExceptionHandler(value = ItemNotFoundException.class)
-	public ResponseEntity<ErrorResponse> handleItemNotFound(HttpServletRequest request, HttpServletResponse response, ItemNotFoundException errorResponse) {
-		logErrorResponse(request, errorResponse);
-		return new ResponseEntity<ErrorResponse>(errorResponse, errorResponse.getHttpStatus());
-	}
-	
-	@ExceptionHandler(value = DataInconsistancyException.class)
-	public ResponseEntity<ErrorResponse> handleDataInconsitancy(HttpServletRequest request, HttpServletResponse response, DataInconsistancyException errorResponse) {
-		logErrorResponse(request, errorResponse);
-		return new ResponseEntity<ErrorResponse>(errorResponse, errorResponse.getHttpStatus());
-	}
-	
-	@ExceptionHandler(value = NotImplementedException.class)
-	public ResponseEntity<ErrorResponse> handleNotImplemented(HttpServletRequest request, HttpServletResponse response, NotImplementedException errorResponse) {
+	@ExceptionHandler(value = {
+		InternalServerException.class,
+		InvalideAuthenticationException.class,
+		ItemConflictException.class,
+		ItemNotFoundException.class,
+		DataInconsistancyException.class,
+		DataInconsistancyException.class,
+		NotImplementedException.class
+	})
+	public ResponseEntity<ErrorResponse> handleInternalServerError(HttpServletRequest request, HttpServletResponse response, ErrorResponse errorResponse) {
 		logErrorResponse(request, errorResponse);
 		return new ResponseEntity<ErrorResponse>(errorResponse, errorResponse.getHttpStatus());
 	}
